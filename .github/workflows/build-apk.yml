@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Setup Java 17
@@ -23,13 +23,28 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
-          gradle-version: '8.10'
+          gradle-version: '8.9'
+
+      - name: Check files
+        run: |
+          echo "Checking project..."
+          ls -la
+          ls -la app
+          java -version
+          gradle --version
 
       - name: Build APK
-        run: gradle assembleDebug
+        run: gradle --no-daemon --stacktrace assembleDebug
+
+      - name: Check APK
+        run: |
+          echo "APK files:"
+          ls -lh app/build/outputs/apk/debug/
+          test -f app/build/outputs/apk/debug/app-debug.apk
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: BarcodeBiller-APK
           path: app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
