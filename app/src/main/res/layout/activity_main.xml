@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:background="@color/bg">
+
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="🛒  Barcode Biller Pro" android:textColor="@color/white"
+        android:textSize="25sp" android:textStyle="bold" android:padding="18dp"/>
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:paddingStart="12dp" android:paddingEnd="12dp">
+        <Button android:id="@+id/scanBtn" android:layout_width="0dp" android:layout_height="48dp"
+            android:layout_weight="1" android:text="SCAN"/>
+        <Button android:id="@+id/addProductBtn" android:layout_width="0dp" android:layout_height="48dp"
+            android:layout_weight="1" android:text="ADD PRODUCT"/>
+        <Button android:id="@+id/historyBtn" android:layout_width="0dp" android:layout_height="48dp"
+            android:layout_weight="1" android:text="HISTORY"/>
+    </LinearLayout>
+
+    <FrameLayout android:id="@+id/cameraBox" android:layout_width="match_parent" android:layout_height="235dp"
+        android:layout_margin="12dp">
+        <androidx.camera.view.PreviewView android:id="@+id/preview" android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <View android:layout_width="255dp" android:layout_height="120dp"
+            android:layout_gravity="center" android:background="@drawable/scan_box"/>
+    </FrameLayout>
+
+    <ScrollView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="14dp">
+
+            <TextView android:id="@+id/status" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="Scan a product barcode" android:textColor="@color/muted" android:paddingBottom="8dp"/>
+
+            <TextView android:id="@+id/product" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="Product: —" android:textColor="@color/white" android:textSize="19sp" android:textStyle="bold"/>
+
+            <TextView android:id="@+id/code" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="Barcode: —" android:textColor="@color/muted"/>
+
+            <EditText android:id="@+id/price" android:layout_width="match_parent" android:layout_height="52dp"
+                android:hint="Selling price ₹" android:inputType="numberDecimal"
+                android:textColor="@color/white" android:textColorHint="@color/muted"/>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="52dp" android:orientation="horizontal">
+                <Button android:id="@+id/minus" android:layout_width="60dp" android:layout_height="match_parent" android:text="−"/>
+                <TextView android:id="@+id/qty" android:layout_width="0dp" android:layout_height="match_parent"
+                    android:layout_weight="1" android:gravity="center" android:text="Qty 1"
+                    android:textColor="@color/white" android:textSize="18sp"/>
+                <Button android:id="@+id/plus" android:layout_width="60dp" android:layout_height="match_parent" android:text="+"/>
+            </LinearLayout>
+
+            <Button android:id="@+id/addBill" android:layout_width="match_parent" android:layout_height="50dp"
+                android:text="ADD TO BILL"/>
+
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="BILL ITEMS" android:textColor="@color/white" android:textSize="18sp"
+                android:textStyle="bold" android:paddingTop="14dp"/>
+
+            <TextView android:id="@+id/cart" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="No items" android:textColor="@color/muted" android:paddingTop="8dp"/>
+
+            <EditText android:id="@+id/discount" android:layout_width="match_parent" android:layout_height="50dp"
+                android:hint="Discount % (optional)" android:inputType="numberDecimal"
+                android:textColor="@color/white" android:textColorHint="@color/muted"/>
+
+            <EditText android:id="@+id/gst" android:layout_width="match_parent" android:layout_height="50dp"
+                android:hint="GST % (optional)" android:inputType="numberDecimal"
+                android:textColor="@color/white" android:textColorHint="@color/muted"/>
+
+            <TextView android:id="@+id/summary" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="Subtotal: ₹0.00
+Discount: ₹0.00
+GST: ₹0.00
+TOTAL: ₹0.00"
+                android:textColor="@color/white" android:textSize="17sp" android:padding="10dp"/>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                <Button android:id="@+id/share" android:layout_width="0dp" android:layout_height="50dp"
+                    android:layout_weight="1" android:text="SHARE BILL"/>
+                <Button android:id="@+id/clear" android:layout_width="0dp" android:layout_height="50dp"
+                    android:layout_weight="1" android:text="CLEAR"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
