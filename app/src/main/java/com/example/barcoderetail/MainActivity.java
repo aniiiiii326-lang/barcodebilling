@@ -87,8 +87,8 @@ public class MainActivity extends AppCompatActivity {
         });
         String local=prefs.getString(raw,"");
         if(!local.isEmpty()){
-            currentName=local.split("\|",2)[0];
-            String[] p=local.split("\|");
+currentName = local.split("\\|", 2)[0];
+String[] p = local.split("\\|");
             if(p.length>1)price.setText(p[1]);
             product.setText("Product: "+currentName); status.setText("Local shop catalog match");
             return;
